@@ -7,9 +7,18 @@ test( "linkedList create", function() {
   ok( head.next.next.next === undefined, "Passed!");
 });
 
-test( "linkedList reverse", function() {
+test( "linkedList reverse by while", function() {
   var head = linkedList.create(['a','b','c']);
-  head = linkedList.reverse(head);
+  head = linkedList.reverseByWhile(head);
+  ok( head.value === 'c', "Passed!");
+  ok( head.next.value === 'b', "Passed!");
+  ok( head.next.next.value === 'a', "Passed!");
+  ok( head.next.next.next === undefined, "Passed!");
+});
+
+test( "linkedList reverse by recursive", function() {
+  var head = linkedList.create(['a','b','c']);
+  head = linkedList.reverseByRecursive(head);
   ok( head.value === 'c', "Passed!");
   ok( head.next.value === 'b', "Passed!");
   ok( head.next.next.value === 'a', "Passed!");

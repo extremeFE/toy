@@ -18,7 +18,7 @@ var linkedList = (function() {
     return head;
   };
 
-  linkedList.reverse = function(head) {
+  linkedList.reverseByWhile = function(head) {
     var next = head.next;
     delete head.next;
     while (next) {
@@ -28,6 +28,16 @@ var linkedList = (function() {
       next = tmp;
     }
     return head;
+  };
+
+  linkedList.reverseByRecursive = function(node, prev) {
+    var next = node.next;
+    if (!prev) {
+      delete node.next;
+    } else {
+      node.next = prev;
+    }
+    return next ? linkedList.reverseByRecursive(next, node) : node;
   };
 
   return linkedList;
